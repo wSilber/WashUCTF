@@ -1,0 +1,10 @@
+version: "2.12.1"
+services:
+  scavenger_hunt:
+    build: "scavenger_hunt/www"
+    ports:
+      - "3000:80"
+  get_with_it:
+    build: "GET_with_it/www"
+    ports:
+      - "4000:80"

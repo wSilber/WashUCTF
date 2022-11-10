@@ -1,0 +1,21 @@
+/* Stylesheet */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #d1d1d1;
+    height: 100vh;
+}
+
+p {
+    font-size: large;
+}
+
+#container {
+    width: 60vw;
+    height: 60vh;
+    text-align: center;
+}
+
+/* (2) s7_1nsp */
+/* Wow you found this! Time to EXECUTE plan B...*/
