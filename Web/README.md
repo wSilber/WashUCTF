@@ -1,3 +1,3 @@
-# WashUCTF
+# Web Challenges
 
 test
