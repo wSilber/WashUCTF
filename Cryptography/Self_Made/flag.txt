@@ -1,1 +1,1 @@
-flag{d0_N0t_M4k3_Cryp70_41G0s_182723}
+flag{fake_flag_here}
