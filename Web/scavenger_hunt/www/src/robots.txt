@@ -1,0 +1,17 @@
+#        _
+#       [ ]
+#      (   )
+#       |>|
+#    __/===\__
+#   //| o=o |\\
+# <]  | o=o |  [>
+#     \=====/
+#    / / | \ \
+#   <_________>
+
+User-agent: *
+Disallow: 
+
+# (4) ud3_23
+# This last ones really a doozie... If only I had a map...
+
