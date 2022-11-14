@@ -29,7 +29,7 @@ def gen_key(n):
     key = ""
 
     for i in range(n):
-        key += chr(random.randint(0, 256))
+        key += chr(random.randint(0, 10))
 
     return key
 
@@ -40,6 +40,10 @@ def xor(v1, v2):
 # swap: Swaps two strings
 def swap(s1, s2):
     return (s2, s1)
+
+# substitute: Substitutes the string provided according to the sbox
+def substitute(s):
+    return ''.join([chr(sbox[((ord(s[i]) >> 4) & 0xf0)][(ord(s[i]) & 0xf)]) for i in range(len(s))])
 
 #selfFeistel: Computes n rounds of a feistel network with given inputs
 def feistel(plaintext, n, decrypt=0):
@@ -55,18 +59,24 @@ def feistel(plaintext, n, decrypt=0):
     for i in range(0, n):
         if decrypt == 0:
             key = gen_key(len(left))
+            keys.append(key)
+            
         else:
             key = keys[n - i - 1]
+            
 
-            print("KEY: "+key)
         left = xor(left, key)
         
         left, right = swap(left, right)
-        keys.append(key)
 
     return left + right
 
+k = feistel(flag, 10)
 print(keys)
-k = feistel(flag, 20)
-k = feistel(k, 20, 1)
+print(k)
+k = feistel(k, 10, 1)
+print(k)
+
+k = substitute(k)
+k = substitute(k)
 print(k)
