@@ -1,6 +1,6 @@
-# Self Made Solution
+# Self Made II Solution
 
-I don't trust any of the trusted encryption algorithms... so I decided to make my own. It is so secure that I will even give you the flag. Except its encrypted >:)
+Professory Ning taught me why my self made encryption algorithm was insecure. I was missing the confuse, difuse, encrypt... confuse, difuse, encrypt...
 
 ## Solution
 
