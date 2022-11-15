@@ -1,6 +1,6 @@
 # Self Made II Solution
 
-Professory Ning taught me why my self made encryption algorithm was insecure. I was missing the confuse, difuse, encrypt... confuse, difuse, encrypt...
+Professory Ning taught me why my self made encryption algorithm was insecure. Now I know confuse and difuse... confuse and difuse... confuse and difuse... 
 
 ## Solution
 
