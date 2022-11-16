@@ -38,15 +38,19 @@ rbox = [[82, 9, 106, 213, 48, 54, 165, 56, 191, 64, 163, 158, 129, 243, 215, 251
         [160, 224, 59, 77, 174, 42, 245, 176, 200, 235, 187, 60, 131, 83, 153, 97],
         [23, 43, 4, 126, 186, 119, 214, 38, 225, 105, 20, 99, 85, 33, 12, 125]]
 
+# Read in my super secret flag
+file = open("flag.txt.solution", 'r')
+flag = file.read()
+
 # Make so random
-random.seed('a')
+random.seed()
 
 # gen_key: Generates a random key of n bytes long
 def gen_key(n):
     key = ""
 
     for i in range(n):
-        key += chr(random.randint(0, 127))
+        key += chr(random.randint(32, 126))
 
     return key
 
@@ -57,6 +61,10 @@ def xor(v1, v2):
 # substitute: Substitutes the string provided according to the sbox
 def substitute(s):
     return ''.join([chr(sbox[ord(s[i]) >> 4][ord(s[i]) & 0xf]) for i in range(len(s))])
+
+# substitute: Substitutes the string provided according to the sbox
+def rSubstitute(s):
+    return ''.join([chr(rbox[ord(s[i]) >> 4][ord(s[i]) & 0xf]) for i in range(len(s))])
 
 #selfFeistel: Computes n rounds of a feistel network with given inputs
 def feistel(plaintext, n):
@@ -75,3 +83,28 @@ def feistel(plaintext, n):
         s = substitute(s)
         
     return s
+
+def decrypt(ciphertext, n):
+    if(len(ciphertext) % 2 == 1):
+        ciphertext += '0'
+
+    half = int(len(ciphertext) / 2)
+    s = ciphertext
+
+    for i in range(0, n):
+        key = keys[n - i - 1]
+        s = rSubstitute(s)
+        s = s[half:] + xor(s[:half], key)
+
+    return s
+
+k = feistel(flag, 433)
+
+print(k)
+
+def flagToAscii(flag):
+    bytes = flag.split(" ")
+
+    return ''.join([chr(int(byte)) for byte in bytes])
+
+# print(flagToAscii(flag))
