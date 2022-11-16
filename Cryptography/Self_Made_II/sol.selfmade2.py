@@ -116,4 +116,5 @@ for i in range(1000, 0, -1):
         print("Found flag at " + str(i))
         print(k)
         break
+    print(i)
     keys.pop()
