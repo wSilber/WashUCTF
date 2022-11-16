@@ -38,12 +38,13 @@ rbox = [[82, 9, 106, 213, 48, 54, 165, 56, 191, 64, 163, 158, 129, 243, 215, 251
         [160, 224, 59, 77, 174, 42, 245, 176, 200, 235, 187, 60, 131, 83, 153, 97],
         [23, 43, 4, 126, 186, 119, 214, 38, 225, 105, 20, 99, 85, 33, 12, 125]]
 
-# Read in my super secret flag
-file = open("flag.txt.solution", 'r')
-flag = file.read()
-
 # Make so random
-random.seed()
+random.seed('WashU CTF')
+
+# Converts bytes encoded in a text file to an ascii string
+def to_ascii(nums):
+    bytes = nums.split(' ')
+    return ''.join([chr(int(byte)) for byte in bytes])
 
 # gen_key: Generates a random key of n bytes long
 def gen_key(n):
@@ -66,8 +67,8 @@ def substitute(s):
 def rSubstitute(s):
     return ''.join([chr(rbox[ord(s[i]) >> 4][ord(s[i]) & 0xf]) for i in range(len(s))])
 
-#selfFeistel: Computes n rounds of a feistel network with given inputs
-def feistel(plaintext, n):
+# selfEncrypt: Super secret encryption algorithm. Computes n rounds of a feistel network with given inputs
+def selfEncrypt(plaintext, n):
     if(len(plaintext) % 2 == 1):
         plaintext += '0'
         
@@ -84,6 +85,7 @@ def feistel(plaintext, n):
         
     return s
 
+# decrypt: Does the feistel network of selfEncrypt in reverse for n rounds
 def decrypt(ciphertext, n):
     if(len(ciphertext) % 2 == 1):
         ciphertext += '0'
@@ -98,13 +100,20 @@ def decrypt(ciphertext, n):
 
     return s
 
-k = feistel(flag, 433)
+# Read in my super secret flag
+file = open("flag.txt", 'r')
+flag = file.read()
+flag = to_ascii(flag)
 
-print(k)
+# Compute the first 1000 keys
+for i in range(0, 1000):
+    keys.append(gen_key(int(len(flag) / 2)))
 
-def flagToAscii(flag):
-    bytes = flag.split(" ")
-
-    return ''.join([chr(int(byte)) for byte in bytes])
-
-# print(flagToAscii(flag))
+# Decrypt the flag for 1000 rounds and check if the flag is found in that round
+for i in range(1000, 0, -1):
+    k = decrypt(flag, i)
+    if "flag" in k:
+        print("Found flag at " + str(i))
+        print(k)
+        break
+    keys.pop()
