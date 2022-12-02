@@ -10,12 +10,16 @@ app.use(bodyParser.json())
 app.use(express.static(__dirname + "/public"))
 
 app.get('/', (req, res) => {
+
+  // Cookie
+
   res.send("index.html")
 })
 
 app.get('/test', async (req, res) => {
   res.status(418)
-  res.set('test', 'test')
+  res.set('X-Forwarded-For', '2.120.0.0')
+  
   res.send("TEST")
 })
 
@@ -48,7 +52,22 @@ app.post('/brewtea', async (req, res) => {
       return;
     }
 
-    res.send({resp : "My HEAD rEally huRts. Can you bring me some tea from England?"})
+    
+    let ip = headers['x-forwarded-for']
+
+    console.log(ip)
+
+    if(!ip) {
+      console.log("No header")
+      res.send({resp : "TEA DOES NOT ORIGINATE FROM ENGLAND!"})
+      return;
+    }
+
+    const ipResp = await axios.get(`https://api.iplocation.net/?cmd=ip-country&ip=${ip}`)
+
+    console.log(ipResp.data)
+
+    res.send({resp : "My HEAD rEally huRts. Can you bring me some tea that originates from England?"})
     return;
   }
 })

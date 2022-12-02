@@ -41,12 +41,16 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background-color: white;
+            background-color: rgb(233, 232, 232);
             height: 30%;
             width: 80%;
             padding: 0 100px;
             box-shadow: 0 4px 8px 0 #000;
             border-radius: 10px;
+        }
+
+        #teapot_url {
+            background-color: rgb(240, 240, 240);
         }
 
     </style>
@@ -81,7 +85,7 @@
         
         let url_to_teapot = document.getElementById('teapot_url').value
 
-        fetch("http://localhost:5000/brewtea", {
+        fetch("http://localhost:50000/brewtea", {
             method: "POST",
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify({
