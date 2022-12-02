@@ -17,14 +17,14 @@ app.get('/', (req, res) => {
   res.send("index.html")
 })
 
-app.get('/test', async (req, res) => {
-  res.status(418)
-  res.set('X-Forwarded-For', '185.192.70.124')
-  res.set('Date', 'Thu, Dec 2 2020 00:00:00 GMT')
-  res.set('Referer', "https://www.kungfutea.com/")
-  res.set('Cookie', "cookie=oatmeal raisin")
-  res.send("TEST")
-})
+// app.get('/test', async (req, res) => {
+//   res.status(418)
+//   res.set('X-Forwarded-For', '185.192.70.124')
+//   res.set('Date', 'Thu, Dec 2 2020 00:00:00 GMT')
+//   res.set('Referer', "https://www.kungfutea.com/")
+//   res.set('Cookie', "cookie=oatmeal raisin")
+//   res.send("TEST")
+// })
 
 app.post('/brewtea', async (req, res) => {
 

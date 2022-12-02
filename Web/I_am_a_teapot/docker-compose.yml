@@ -1,4 +1,4 @@
-version: "2"
+version: "2.12.1"
 services:
   scavenger_hunt:
     build: "scavenger_hunt/www"
@@ -8,7 +8,3 @@ services:
     build: "GET_with_it/www"
     ports:
       - "4000:80"
-  i_am_a_teapot:
-    build: "I_am_a_teapot/www/src"
-    ports:
-      - "5000:5000"
