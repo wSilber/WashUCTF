@@ -85,7 +85,8 @@
         
         let url_to_teapot = document.getElementById('teapot_url').value
 
-        fetch("http://3.136.112.49:5000/brewtea", {
+        //fetch("http://3.136.112.49:5000/brewtea", {
+        fetch('http://localhost:50000/brewtea', {
             method: "POST",
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify({
