@@ -1,4 +1,4 @@
-# GET With It
+# Admin Takeover
 
 ## Challenge Description
 
