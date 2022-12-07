@@ -1,3 +1,0 @@
-# WashUCTF
-
-test
