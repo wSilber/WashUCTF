@@ -1,4 +1,4 @@
-# I Am A Teapot Solution
+# I Am A Teapot 
 
 ## Challenge Description
 
