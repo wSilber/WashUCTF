@@ -14,4 +14,4 @@ Due to the way the OFB block cipher mode operates, if IVs are reused it introduc
 
 By XORing our message with our encrypted message and XORing the result with the encrypted password, we obtain the password `d0nt_r3us3_ivs_1ts_bad`, which gives us our flag.
 
-## Flag
+## Flag: flag{d0nt_r3us3_ivs_1ts_bad}
