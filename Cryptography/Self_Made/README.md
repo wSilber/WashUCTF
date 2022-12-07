@@ -1,4 +1,4 @@
-# Self Made Solution
+# Self Made
 
 ## Challenge Description
 
