@@ -1,4 +1,4 @@
-# Hijack Solution
+# Hijack 
 
 ## Challenge Description
 
