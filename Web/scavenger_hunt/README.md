@@ -1,4 +1,4 @@
-# Scavenger Hunt Solution
+# Scavenger Hunt
 
 ## Challenge Description
 
